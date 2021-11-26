@@ -1,32 +1,132 @@
 <!DOCTYPE html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-content="width=device-width">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <title>RPI_Freshman_Guider.com</title>
+    <link href="./style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="final.js"></script>
+    <link href="./index.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+      } );
+      </script>
+    <script>const ratingStars = [...document.getElementsByClassName("rating__star")];
 
-<title>RPI Freshman Guider</title>
-<link href="assets/style.css" rel="stylesheet"
-type="text/css"/>
-
-</head>
-<header>
-  <h1>RPI Freshman Website</h1>
-  <nav>
-    <ul>
-      <li>
-        <a href="index.html">HOME</a></li>
+    function executeRating(stars) {
+      const starClassActive = "rating__star fas fa-star";
+      const starClassInactive = "rating__star far fa-star";
+      const starsLength = stars.length;
+      let i;
+      stars.map((star) => {
+        star.onclick = () => {
+          i = stars.indexOf(star);
+    
+          if (star.className===starClassInactive) {
+            for (i; i >= 0; --i) stars[i].className = starClassActive;
+          } else {
+            for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+          }
+        };
+      });
+    }
+    executeRating(ratingStars);
+  </script>
+<style>
+  .ui-progressbar {
+    position: relative;
+  }
+  .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Complete!" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 2 );
+ 
+      if ( val < 99 ) {
+        setTimeout( progress, 80 );
+      }
+    }
+ 
+    setTimeout( progress, 2000 );
+  } );
+  </script>
+  </head>
+  <header>
+    <p1>Rr.com</p1>
+    <nav>
+      <ul>
         <li>
-          <a href="freshman.html">FRESHMAN</a></li>
+          <a href="index.html">HOME</a></li>
           <li>
-            <a href="department.html">DEPARTMENT</a></li>
+            <a href="https://quacs.org/fall2021/#/">Quacs</a></li>
             <li>
-              <a href="faq.html">FAQ</a></li>
-            
-          </ul>
-  </nav>
-</header>
-
-<body>
-
-</body>
+              <a href="https://publicsafety.rpi.edu">Emergency</a></li>
+              <li>
+                <a href="login.html">Login page</a></li>
+            </ul>
+    </nav>
+  </header>
+  <!--2-->
+  <body>
+    <div class="container">
+      <div class="hero">
+        <img src="./hero.jpg" width="100%" height= 375px>
+        <p>RPI Freshman Website</p>
+      </div>
+    </div>
+      <p>Date: <input type="text" id="datepicker"></p>
+      <div class="p40">
+          <div class="link>
+        <div id="info1">
+          <h1>This website is for freshmen, which contain all the possible websites that students may use.</h1>
+        </div>
+        <div id = "health">
+          <li><a href="basic.html"><button>Required, daily healthy and Foundation</button></a></li>
+        </div>
+        <div id = "basic1">
+          <li><a href="basic1.html"><button>basic daily used website</button></a></li>
+        </div>
+        <div id = "academy">
+          <li><a href="academy.html"><button>basic daily used website</button></a></li>
+        </div>
+      </div>
+    <div class="rating">
+      <i class="rating__star far fa-star"></i>
+      <i class="rating__star far fa-star"></i>
+      <i class="rating__star far fa-star"></i>
+      <i class="rating__star far fa-star"></i>
+      <i class="rating__star far fa-star"></i>
+</div>
+    <div id="progressbar"><div class="progress-label">Loading...</div></div>
+  </body>
 </html>
